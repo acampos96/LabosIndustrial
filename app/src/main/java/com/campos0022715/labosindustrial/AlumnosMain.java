@@ -1,8 +1,7 @@
 package com.campos0022715.labosindustrial;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -14,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.campos0022715.labosindustrial.Adapter.*;
+
 
 import java.util.ArrayList;
 
@@ -37,9 +38,16 @@ public class AlumnosMain extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         RecyclerView lista= (RecyclerView) findViewById(R.id.LabosAlumnos);
         ArrayList<Laboratorio> labos = new ArrayList<>();
-        labos.add(new Laboratorio("Ciencia de los Materiales","Laboratorio 01", "Lunes 13:30-15:10"));
-        labos.add(new Laboratorio("Mecánica de los Materiales","Laboratorio 02", "Martes 13:30-15:10"));
-        labos.add(new Laboratorio("Materia X","Laboratorio 03", "Miercoles 13:30-15:10"));
+
+        //POB
+        labos.add(new Laboratorio(1, "Ciencia de los Materiales","Laboratorio 01", "Lunes 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
+        labos.add(new Laboratorio(2, "Mecánica de los Materiales","Laboratorio 02", "Martes 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
+        labos.add(new Laboratorio(3, "Materia X","Laboratorio 03", "Miercoles 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
+        labos.add(new Laboratorio(4, "Ciencia de los Materiales","Laboratorio 01", "Lunes 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
+        labos.add(new Laboratorio(5, "Mecánica de los Materiales","Laboratorio 02", "Martes 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
+        labos.add(new Laboratorio(6, "Materia X","Laboratorio 03", "Miercoles 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
+
+
         lista.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         lista.setLayoutManager(manager);
@@ -84,18 +92,14 @@ public class AlumnosMain extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.LabosDisp) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.MisLabos) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.Cerrar) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.Informacion) {
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
