@@ -20,6 +20,7 @@
         android:text="Ingenieria Industrial"
         android:layout_marginBottom="40dp"
         android:textSize="20sp"
+        android:textColor="@android:color/black"
         android:layout_gravity="center" />
 
     <android.support.design.widget.TextInputLayout
