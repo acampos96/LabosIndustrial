@@ -2,10 +2,9 @@ package com.campos0022715.labosindustrial;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,19 +14,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-import java.util.ArrayList;
-
-public class MisLabos extends AppCompatActivity
+public class DetallesMLabos extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    static final String NOMBRE ="nombre", HORARIO="horario", DIA="dia", SALON="salon", INSTRUCTOR="instructor", MATERIA="materia", IDL="id";
+    String materia, nombre, dia, horario, salon, instructor;
+    int id;
+    Laboratorio labo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mis_labos);
+        setContentView(R.layout.activity_detalles_mlabos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -37,18 +37,27 @@ public class MisLabos extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        RecyclerView lista= (RecyclerView) findViewById(R.id.MisLabosAlumnos);
-        ArrayList<Laboratorio> labos = new ArrayList<>();
 
-        //POB
-        labos.add(new Laboratorio(1, "Ciencia de los Materiales","Laboratorio 01", "Lunes","13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
-        labos.add(new Laboratorio(6, "Materia X","Laboratorio 03", "Miercoles", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
-
-
-        lista.setHasFixedSize(true);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        lista.setLayoutManager(manager);
-        lista.setAdapter(new AdapterML(this, labos));
+        materia=getIntent().getStringExtra(MATERIA);
+        nombre=getIntent().getStringExtra(NOMBRE);
+        dia=getIntent().getStringExtra(DIA);
+        horario=getIntent().getStringExtra((HORARIO));
+        salon=getIntent().getStringExtra(SALON);
+        instructor=getIntent().getStringExtra(INSTRUCTOR);
+        id=getIntent().getIntExtra(IDL,1);
+        labo=new Laboratorio(id, materia, nombre, dia, horario, instructor, salon);
+        TextView subject = (TextView) findViewById(R.id.DeMateria);
+        TextView name = (TextView) findViewById(R.id.DeLabo);
+        TextView day = (TextView) findViewById(R.id.DeDia);
+        TextView schedule = (TextView) findViewById(R.id.DeHorario);
+        TextView room = (TextView) findViewById(R.id.DeSalon);
+        TextView tutor = (TextView) findViewById(R.id.DeInstructor);
+        subject.setText(materia);
+        name.setText(nombre);
+        day.setText(dia);
+        schedule.setText(horario);
+        room.setText(salon);
+        tutor.setText(instructor);
     }
 
     @Override
@@ -64,7 +73,7 @@ public class MisLabos extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.mis_labos, menu);
+        getMenuInflater().inflate(R.menu.detalles_mlabos, menu);
         return true;
     }
 
@@ -108,5 +117,8 @@ public class MisLabos extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void clic(View view){
+        Snackbar.make(view, "Pasar a Pantalla Ver Notas", Snackbar.LENGTH_SHORT).show();
     }
 }

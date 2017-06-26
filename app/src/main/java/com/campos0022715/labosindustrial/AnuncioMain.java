@@ -18,16 +18,15 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 
-public class MisLabos extends AppCompatActivity
+public class AnuncioMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mis_labos);
+        setContentView(R.layout.activity_anuncio_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -37,18 +36,19 @@ public class MisLabos extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        RecyclerView lista= (RecyclerView) findViewById(R.id.MisLabosAlumnos);
-        ArrayList<Laboratorio> labos = new ArrayList<>();
+
+        RecyclerView lista= (RecyclerView) findViewById(R.id.AnunciosLista);
+        ArrayList<Anuncio> anuncios = new ArrayList<>();
 
         //POB
-        labos.add(new Laboratorio(1, "Ciencia de los Materiales","Laboratorio 01", "Lunes","13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
-        labos.add(new Laboratorio(6, "Materia X","Laboratorio 03", "Miercoles", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
-
+        anuncios.add(new Anuncio(1, "Laboratorio 01", "Entrega de Proyecto", "La nueva fecha de entrega del proyecto es el jueves 29 de junio de 2017 a las 9:00 am","Programacion de Dispositivos Moviles"));
+        anuncios.add(new Anuncio(2, "Laboratorio 02", "Documentos a Entregar", "El dia de la defensa deben entregar en un CD el articulo técnico, Manual tecnico, y Manual de usuario de su aplicacion","Programacion de Dispositivos Moviles"));
+        anuncios.add(new Anuncio(3, "Laboratorio 03", "Cambio de Fecha", "El proyecto que estaba planificado para entregarse hoy, pasara al miercoles 28 de junio","Bases de Datos"));
 
         lista.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         lista.setLayoutManager(manager);
-        lista.setAdapter(new AdapterML(this, labos));
+        lista.setAdapter(new AdapterAn(this, anuncios));
     }
 
     @Override
@@ -64,7 +64,7 @@ public class MisLabos extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.mis_labos, menu);
+        getMenuInflater().inflate(R.menu.anuncio_main, menu);
         return true;
     }
 

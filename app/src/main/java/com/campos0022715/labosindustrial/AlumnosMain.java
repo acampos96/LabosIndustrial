@@ -91,14 +91,19 @@ public class AlumnosMain extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.LabosDisp) {
-            // Handle the camera action
+            Intent intent = new Intent(this,AlumnosMain.class);
+            startActivity(intent);
         } else if (id == R.id.MisLabos) {
-            Intent intent = new Intent(this,MisLabos.class);
+            Intent intent = new Intent(this, MisLabos.class);
             startActivity(intent);
         } else if (id == R.id.Cerrar) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         } else if (id == R.id.Informacion) {
+        }
+        else if(id== R.id.AnunciosM){
+            Intent intent = new Intent(this, AnuncioMain.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

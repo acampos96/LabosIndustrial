@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.campos0022715.labosindustrial.AnuncioInfo"
+    tools:showIn="@layout/app_bar_anuncio_info"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AnMateria"
+        tools:text="Nombre de la Materia"
+        android:textSize="30sp"
+        android:gravity="start"
+        android:padding="20dp"
+        android:textStyle="bold"
+        android:textColor="#01579B"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AnLabo"
+        tools:text="Nombre del Laboratorio"
+        android:textSize="25dp"
+        android:gravity="start"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="40dp"
+        android:textColor="#0277BD"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/AnTitulo"
+            tools:text="Titulo del Anuncio"
+            android:textAllCaps="true"
+            android:textSize="35sp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
+            android:textColor="@color/colorAccent"
+            android:gravity="center"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/AnAnuncio"
+            tools:text="Cuerpo del anuncio, este mensaje no debe de superar los 300 caracteres"
+            android:textSize="25sp"
+            android:padding="20dp"/>
+
+</LinearLayout>

@@ -15,16 +15,16 @@ import java.util.ArrayList;
  * Created by Ale Campos on 25/6/2017.
  */
 
-public class AdapterML extends CustomRecyclerViewAdapter {
+public class AdapterAn extends CustomRecyclerViewAdapter {
 
     private Activity activity;
-    private ArrayList<Laboratorio> Labos;
+    private ArrayList<Anuncio> anuncios;
     private int screenWidth;
-    static final String NOMBRE ="nombre", HORARIO="horario", DIA="dia", SALON="salon", INSTRUCTOR="instructor", MATERIA="materia", ID="id";
+    static final String NOMBRE ="nombre",ANUNCIO="anuncio", LABO="labo", MATERIA="materia", ID="id";
 
-    public AdapterML(final Activity activity, ArrayList<Laboratorio> Labos) {
+    public AdapterAn(final Activity activity, ArrayList<Anuncio> Labos) {
         this.activity = activity;
-        this.Labos = Labos;
+        this.anuncios = Labos;
     }
 
 
@@ -38,22 +38,20 @@ public class AdapterML extends CustomRecyclerViewAdapter {
     @Override
     public void onBindViewHolder(CustomRecycleViewHolder holder, int position) {
         final ViewHolder myHolder = (ViewHolder) holder;
-        myHolder.poster.setText(Labos.get(position).getMateria());
-        myHolder.title.setText(Labos.get(position).getNombre());
-        myHolder.horario.setText(Labos.get(position).getDia()+" "+Labos.get(position).getHorario());
+        myHolder.materia.setText(anuncios.get(position).getMateria());
+        myHolder.title.setText(anuncios.get(position).getTitulo());
+        myHolder.Labo.setText(anuncios.get(position).getLaboXMateria());
 
         setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Laboratorio labo = Labos.get(position);
-                Intent intent = new Intent(activity,DetallesMLabos.class);
-                intent.putExtra(NOMBRE,labo.getNombre());
-                intent.putExtra(HORARIO,labo.getHorario());
-                intent.putExtra(DIA, labo.getDia());
-                intent.putExtra(MATERIA,labo.getMateria());
-                intent.putExtra(ID, labo.getIdLaboXMateria());
-                intent.putExtra(SALON,labo.getSalon());
-                intent.putExtra(INSTRUCTOR,labo.getInstructor());
+                Anuncio announcement = anuncios.get(position);
+                Intent intent = new Intent(activity,AnuncioInfo.class);
+                intent.putExtra(NOMBRE,announcement.getTitulo());
+                intent.putExtra(MATERIA, announcement.getMateria());
+                intent.putExtra(LABO, announcement.getLaboXMateria());
+                intent.putExtra(ANUNCIO,announcement.getAnuncio());
+                intent.putExtra(ID, announcement.getIdAnuncio());
                 activity.startActivity(intent);
             }
         });
@@ -61,20 +59,20 @@ public class AdapterML extends CustomRecyclerViewAdapter {
 
     @Override
     public int getItemCount() {
-        return Labos.size();
+        return anuncios.size();
     }
 
     public class ViewHolder extends CustomRecycleViewHolder {
-        private TextView poster;
+        private TextView materia;
         private TextView title;
-        private TextView horario;
+        private TextView Labo;
         private CardView card;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            poster = (TextView) itemView.findViewById(R.id.NomMateria);
+            materia = (TextView) itemView.findViewById(R.id.NomMateria);
             title = (TextView) itemView.findViewById(R.id.NomLabo);
-            horario = (TextView) itemView.findViewById(R.id.HorLabo);
+            Labo = (TextView) itemView.findViewById(R.id.HorLabo);
             card = (CardView) itemView.findViewById(R.id.LabosCardView);
         }
     }

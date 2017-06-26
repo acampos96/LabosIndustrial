@@ -37,6 +37,18 @@
         <activity
             android:name=".MisLabos"
             android:label="@string/title_activity_mis_labos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DetallesMLabos"
+            android:label="@string/title_activity_detalles_mlabos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AnuncioMain"
+            android:label="@string/title_activity_anuncio_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AnuncioInfo"
+            android:label="@string/title_activity_anuncio_info"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

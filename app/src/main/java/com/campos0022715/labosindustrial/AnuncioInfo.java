@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,40 +13,42 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-import java.util.ArrayList;
-
-public class MisLabos extends AppCompatActivity
+public class AnuncioInfo extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    static final String NOMBRE ="nombre",ANUNCIO="anuncio", LABO="labo", MATERIA="materia", ID="id";
+    String name, body, lab, subject;
+    int dni;
+    Anuncio news;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mis_labos);
+        setContentView(R.layout.activity_anuncio_info);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        RecyclerView lista= (RecyclerView) findViewById(R.id.MisLabosAlumnos);
-        ArrayList<Laboratorio> labos = new ArrayList<>();
-
-        //POB
-        labos.add(new Laboratorio(1, "Ciencia de los Materiales","Laboratorio 01", "Lunes","13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
-        labos.add(new Laboratorio(6, "Materia X","Laboratorio 03", "Miercoles", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
-
-
-        lista.setHasFixedSize(true);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        lista.setLayoutManager(manager);
-        lista.setAdapter(new AdapterML(this, labos));
+        name= getIntent().getStringExtra(NOMBRE);
+        body= getIntent().getStringExtra(ANUNCIO);
+        lab= getIntent().getStringExtra(LABO);
+        subject= getIntent().getStringExtra(MATERIA);
+        dni=getIntent().getIntExtra(ID,1);
+        news= new Anuncio(dni,lab,name,body,subject);
+        TextView materia= (TextView) findViewById(R.id.AnMateria);
+        TextView labo= (TextView) findViewById(R.id.AnLabo);
+        TextView anun= (TextView) findViewById(R.id.AnAnuncio);
+        TextView titulo= (TextView) findViewById(R.id.AnTitulo);
+        materia.setText(news.getMateria());
+        labo.setText(news.getLaboXMateria());
+        anun.setText(news.getAnuncio());
+        titulo.setText(news.getTitulo());
     }
 
     @Override
@@ -64,7 +64,7 @@ public class MisLabos extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.mis_labos, menu);
+        getMenuInflater().inflate(R.menu.anuncio_info, menu);
         return true;
     }
 

@@ -5,14 +5,25 @@ package com.campos0022715.labosindustrial;
  */
 
 public class Anuncio {
-    int idAnuncio, LaboXMateria;
-    String Titulo, Anuncio;
+    int idAnuncio;
+    String LaboXMateria;
+    String Titulo, Anuncio, Materia;
 
-    public Anuncio(int idAnuncio, int laboXMateria, String titulo, String anuncio) {
+    public Anuncio(int idAnuncio, String laboXMateria, String titulo, String anuncio, String materia) {
         this.idAnuncio = idAnuncio;
-        LaboXMateria = laboXMateria;
-        Titulo = titulo;
-        Anuncio = anuncio;
+        this.LaboXMateria = laboXMateria;
+        this.Titulo = titulo;
+        this.Anuncio = anuncio;
+        this.Materia=materia;
+
+    }
+
+    public String getMateria() {
+        return Materia;
+    }
+
+    public void setMateria(String materia) {
+        Materia = materia;
     }
 
     public int getIdAnuncio() {
@@ -23,11 +34,11 @@ public class Anuncio {
         this.idAnuncio = idAnuncio;
     }
 
-    public int getLaboXMateria() {
+    public String getLaboXMateria() {
         return LaboXMateria;
     }
 
-    public void setLaboXMateria(int laboXMateria) {
+    public void setLaboXMateria(String laboXMateria) {
         LaboXMateria = laboXMateria;
     }
 

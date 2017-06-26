@@ -12,4 +12,7 @@
     <string name="action_settings">Ajustes</string>
     <string name="title_activity_inscripcion_labos">Inscribir Laboratorio</string>
     <string name="title_activity_mis_labos">Mis Laboratorios</string>
+    <string name="title_activity_detalles_mlabos">Detalles del Laboratorio</string>
+    <string name="title_activity_anuncio_main">Anuncios</string>
+    <string name="title_activity_anuncio_info">Detalles de Anuncio</string>
 </resources>

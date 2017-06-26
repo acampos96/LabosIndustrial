@@ -105,11 +105,16 @@ public class InscripcionLabos extends AppCompatActivity
             Intent intent = new Intent(this,AlumnosMain.class);
             startActivity(intent);
         } else if (id == R.id.MisLabos) {
-
+            Intent intent = new Intent(this, MisLabos.class);
+            startActivity(intent);
         } else if (id == R.id.Cerrar) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         } else if (id == R.id.Informacion) {
+        }
+        else if(id== R.id.AnunciosM){
+            Intent intent = new Intent(this, AnuncioMain.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -117,6 +122,6 @@ public class InscripcionLabos extends AppCompatActivity
         return true;
     }
     public void clic(View view){
-        Snackbar.make(view, "Inscripcion exitosa", BaseTransientBottomBar.LENGTH_SHORT).show();
+        Snackbar.make(view, "Inscripcion exitosa", Snackbar.LENGTH_SHORT).show();
     }
 }
