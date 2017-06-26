@@ -50,6 +50,9 @@
             android:name=".AnuncioInfo"
             android:label="@string/title_activity_anuncio_info"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Informacion"
+            android:label="@string/title_activity_informacion"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
