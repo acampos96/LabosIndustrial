@@ -11,4 +11,5 @@
 
     <string name="action_settings">Ajustes</string>
     <string name="title_activity_inscripcion_labos">Inscribir Laboratorio</string>
+    <string name="title_activity_mis_labos">Mis Laboratorios</string>
 </resources>

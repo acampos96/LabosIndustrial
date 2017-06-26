@@ -2,8 +2,11 @@ package com.campos0022715.labosindustrial;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,18 +16,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
 import java.util.ArrayList;
 
-public class AlumnosMain extends AppCompatActivity
+public class MisLabos extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alumnos_main);
+        setContentView(R.layout.activity_mis_labos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -34,15 +37,11 @@ public class AlumnosMain extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        RecyclerView lista= (RecyclerView) findViewById(R.id.LabosAlumnos);
+        RecyclerView lista= (RecyclerView) findViewById(R.id.MisLabosAlumnos);
         ArrayList<Laboratorio> labos = new ArrayList<>();
 
         //POB
         labos.add(new Laboratorio(1, "Ciencia de los Materiales","Laboratorio 01", "Lunes","13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
-        labos.add(new Laboratorio(2, "Mecánica de los Materiales","Laboratorio 02", "Martes", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
-        labos.add(new Laboratorio(3, "Materia X","Laboratorio 03", "Miercoles", " 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
-        labos.add(new Laboratorio(4, "Ciencia de los Materiales","Laboratorio 01", "Lunes", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
-        labos.add(new Laboratorio(5, "Mecánica de los Materiales","Laboratorio 02", "Martes", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
         labos.add(new Laboratorio(6, "Materia X","Laboratorio 03", "Miercoles", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
 
 
@@ -65,7 +64,7 @@ public class AlumnosMain extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.alumnos_main, menu);
+        getMenuInflater().inflate(R.menu.mis_labos, menu);
         return true;
     }
 
@@ -91,10 +90,10 @@ public class AlumnosMain extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.LabosDisp) {
-            // Handle the camera action
-        } else if (id == R.id.MisLabos) {
-            Intent intent = new Intent(this,MisLabos.class);
+            Intent intent = new Intent(this,AlumnosMain.class);
             startActivity(intent);
+        } else if (id == R.id.MisLabos) {
+
         } else if (id == R.id.Cerrar) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
