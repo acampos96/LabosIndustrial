@@ -6,15 +6,24 @@ package com.campos0022715.labosindustrial;
 
 public class Laboratorio {
     int idLaboXMateria;
-    String nombre, materia, horario, instructor, salon;
+    String nombre, materia, dia, horario, instructor, salon;
 
-    public Laboratorio(int idLaboXMateria, String materia, String nombre, String horario, String instructor, String salon) {
+    public Laboratorio(int idLaboXMateria, String materia, String nombre, String dia, String horario, String instructor, String salon) {
         this.idLaboXMateria = idLaboXMateria;
         this.nombre = nombre;
         this.materia = materia;
+        this.dia=dia;
         this.horario = horario;
         this.instructor = instructor;
         this.salon = salon;
+    }
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
     }
 
     public int getIdLaboXMateria() {

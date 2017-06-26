@@ -10,16 +10,8 @@
             android:id="@+id/MisLabos"
             android:icon="@drawable/emptyicon"
             android:title="Mis Laboratorios" />
-        <item
-            android:id="@+id/Cerrar"
-            android:icon="@drawable/emptyicon"
-            android:title="Cerrar Sesión" />
     </menu>
-
     </item>
-
-
-
     <item android:title="Contáctanos">
         <menu>
             <item
@@ -28,5 +20,12 @@
                 android:title="Información" />
         </menu>
     </item>
-
+    <item android:title="Ajustes">
+        <menu>
+            <item
+                android:id="@+id/Cerrar"
+                android:icon="@drawable/emptyicon"
+                android:title="Cerrar Sesión" />
+        </menu>
+    </item>
 </menu>

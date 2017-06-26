@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.campos0022715.labosindustrial.Adapter.*;
 
 
 import java.util.ArrayList;
@@ -40,12 +38,12 @@ public class AlumnosMain extends AppCompatActivity
         ArrayList<Laboratorio> labos = new ArrayList<>();
 
         //POB
-        labos.add(new Laboratorio(1, "Ciencia de los Materiales","Laboratorio 01", "Lunes 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
-        labos.add(new Laboratorio(2, "Mecánica de los Materiales","Laboratorio 02", "Martes 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
-        labos.add(new Laboratorio(3, "Materia X","Laboratorio 03", "Miercoles 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
-        labos.add(new Laboratorio(4, "Ciencia de los Materiales","Laboratorio 01", "Lunes 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
-        labos.add(new Laboratorio(5, "Mecánica de los Materiales","Laboratorio 02", "Martes 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
-        labos.add(new Laboratorio(6, "Materia X","Laboratorio 03", "Miercoles 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
+        labos.add(new Laboratorio(1, "Ciencia de los Materiales","Laboratorio 01", "Lunes","13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
+        labos.add(new Laboratorio(2, "Mecánica de los Materiales","Laboratorio 02", "Martes", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
+        labos.add(new Laboratorio(3, "Materia X","Laboratorio 03", "Miercoles", " 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
+        labos.add(new Laboratorio(4, "Ciencia de los Materiales","Laboratorio 01", "Lunes", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
+        labos.add(new Laboratorio(5, "Mecánica de los Materiales","Laboratorio 02", "Martes", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
+        labos.add(new Laboratorio(6, "Materia X","Laboratorio 03", "Miercoles", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
 
 
         lista.setHasFixedSize(true);

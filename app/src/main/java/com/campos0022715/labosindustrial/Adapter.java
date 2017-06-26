@@ -1,17 +1,13 @@
 package com.campos0022715.labosindustrial;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -24,6 +20,7 @@ public class Adapter extends CustomRecyclerViewAdapter {
     private Activity activity;
     private ArrayList<Laboratorio> Labos;
     private int screenWidth;
+    static final String NOMBRE ="nombre", HORARIO="horario", DIA="dia", SALON="salon", INSTRUCTOR="instructor", MATERIA="materia", ID="id";
 
     public Adapter(final Activity activity, ArrayList<Laboratorio> Labos) {
         this.activity = activity;
@@ -43,12 +40,21 @@ public class Adapter extends CustomRecyclerViewAdapter {
         final ViewHolder myHolder = (ViewHolder) holder;
         myHolder.poster.setText(Labos.get(position).getMateria());
         myHolder.title.setText(Labos.get(position).getNombre());
-        myHolder.horario.setText(Labos.get(position).getHorario());
+        myHolder.horario.setText(Labos.get(position).getDia()+" "+Labos.get(position).getHorario());
 
         setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(activity,"Click", Toast.LENGTH_LONG).show();
+                Laboratorio labo = Labos.get(position);
+                Intent intent = new Intent(activity,InscribirLabo.class);
+                intent.putExtra(NOMBRE,labo.getNombre());
+                intent.putExtra(HORARIO,labo.getHorario());
+                intent.putExtra(DIA, labo.getDia());
+                intent.putExtra(MATERIA,labo.getMateria());
+                intent.putExtra(ID, labo.getIdLaboXMateria());
+                intent.putExtra(SALON,labo.getSalon());
+                intent.putExtra(INSTRUCTOR,labo.getInstructor());
+                activity.startActivity(intent);
             }
         });
     }
