@@ -18,11 +18,21 @@ public class LoginActivity extends AppCompatActivity {
         contraseña = (TextInputEditText) findViewById(R.id.contraseña);
     }
 
-    public void entrar(View view){
-        user=carne.getText().toString();
-        pass=contraseña.getText().toString();
-        //Validar con WebService
-        Intent intent= new Intent(this,AlumnosMain.class);
-        startActivity(intent);
+    public void entrar(View view) {
+        user = carne.getText().toString();
+        pass = contraseña.getText().toString();
+        if (carne.getText().toString().trim().equals("")) {
+            carne.setError("Ingrese su carnet");
+        }
+        else{
+            if (contraseña.getText().toString().trim().equals("")) {
+                contraseña.setError("Ingrese su contraseña");
+            }
+            else {
+                //Validar con WebService
+                Intent intent = new Intent(this, AlumnosMain.class);
+                startActivity(intent);
+            }
+        }
     }
 }
