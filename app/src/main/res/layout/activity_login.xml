@@ -66,11 +66,4 @@
         android:textColor="@color/colorPrimaryDark"
         android:onClick="entrar"/>
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:text=":v"
-        android:layout_gravity="center"/>
-
-
 </LinearLayout>
