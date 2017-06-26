@@ -46,7 +46,7 @@ public class Adapter extends CustomRecyclerViewAdapter {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Laboratorio labo = Labos.get(position);
-                Intent intent = new Intent(activity,InscribirLabo.class);
+                Intent intent = new Intent(activity,InscripcionLabos.class);
                 intent.putExtra(NOMBRE,labo.getNombre());
                 intent.putExtra(HORARIO,labo.getHorario());
                 intent.putExtra(DIA, labo.getDia());

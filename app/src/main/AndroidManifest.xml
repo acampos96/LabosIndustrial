@@ -27,12 +27,12 @@
         <activity
             android:name=".AlumnosMain"
             android:label="@string/title_activity_alumnos_main"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="userPortrait"/>
+            android:screenOrientation="userPortrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".InscribirLabo"
-            android:label="Informacion del Laboratorio"
-            android:screenOrientation="userPortrait"/>
+            android:name=".InscripcionLabos"
+            android:label="@string/title_activity_inscripcion_labos"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
