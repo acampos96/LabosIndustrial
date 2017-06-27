@@ -22,4 +22,5 @@
     <string name="area_laboral3">Podrá desempeñarse como asesor o consultor de empresas, tanto públicas como privadas y/o en el desarrollo de estudios de factibilidad y gerencia de proyectos</string>
     <string name="area_laboral4">Podrá desempeñarse como empresario al frente de sus propios negocios</string>
     <string name="title_activity_ver_notas">Mis Notas</string>
+    <string name="title_activity_intro_carrera">Informacion de la Carrera</string>
 </resources>

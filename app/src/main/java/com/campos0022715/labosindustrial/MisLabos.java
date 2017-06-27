@@ -110,6 +110,10 @@ public class MisLabos extends AppCompatActivity
             Intent intent = new Intent(this, AnuncioMain.class);
             intent.putExtra("usuario", user);
             startActivity(intent);
+        } else if(id== R.id.Informacion){
+            Intent intent = new Intent(this, IntroCarrera.class);
+            intent.putExtra("usuario",user);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

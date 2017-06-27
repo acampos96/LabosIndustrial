@@ -24,7 +24,7 @@
                 android:icon="@drawable/emptyicon"
                 android:title="Personal" />
             <item
-                android:id="@+id/Information"
+                android:id="@+id/Informacion"
                 android:icon="@drawable/emptyicon"
                 android:title="Información"/>
         </menu>

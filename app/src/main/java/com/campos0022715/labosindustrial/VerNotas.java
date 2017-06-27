@@ -91,7 +91,6 @@ public class VerNotas extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -118,7 +117,12 @@ public class VerNotas extends AppCompatActivity
             Intent intent = new Intent(this, AnuncioMain.class);
             intent.putExtra("usuario", user);
             startActivity(intent);
+        } else if(id== R.id.Informacion){
+            Intent intent = new Intent(this, IntroCarrera.class);
+            intent.putExtra("usuario",user);
+            startActivity(intent);
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

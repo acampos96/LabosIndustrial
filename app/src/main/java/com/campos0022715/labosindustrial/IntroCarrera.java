@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,18 +14,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
-
-public class AnuncioMain extends AppCompatActivity
+public class IntroCarrera extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Usuario user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anuncio_main);
+        setContentView(R.layout.activity_intro_carrera);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -37,19 +34,9 @@ public class AnuncioMain extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        user=(Usuario) getIntent().getSerializableExtra("usuario");
-        RecyclerView lista= (RecyclerView) findViewById(R.id.AnunciosLista);
-        ArrayList<Anuncio> anuncios = new ArrayList<>();
+        user = (Usuario) getIntent().getSerializableExtra("usuario");
 
-        //POB
-        anuncios.add(new Anuncio(1, "Laboratorio 01", "Entrega de Proyecto", "La nueva fecha de entrega del proyecto es el jueves 29 de junio de 2017 a las 9:00 am","Programacion de Dispositivos Moviles"));
-        anuncios.add(new Anuncio(2, "Laboratorio 02", "Documentos a Entregar", "El dia de la defensa deben entregar en un CD el articulo técnico, Manual tecnico, y Manual de usuario de su aplicacion","Programacion de Dispositivos Moviles"));
-        anuncios.add(new Anuncio(3, "Laboratorio 03", "Cambio de Fecha", "El proyecto que estaba planificado para entregarse hoy, pasara al miercoles 28 de junio","Bases de Datos"));
 
-        lista.setHasFixedSize(true);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        lista.setLayoutManager(manager);
-        lista.setAdapter(new AdapterAn(this, anuncios,user));
     }
 
     @Override
@@ -65,7 +52,7 @@ public class AnuncioMain extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.anuncio_main, menu);
+        getMenuInflater().inflate(R.menu.intro_carrera, menu);
         return true;
     }
 
@@ -83,7 +70,6 @@ public class AnuncioMain extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -115,7 +101,6 @@ public class AnuncioMain extends AppCompatActivity
             intent.putExtra("usuario",user);
             startActivity(intent);
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
