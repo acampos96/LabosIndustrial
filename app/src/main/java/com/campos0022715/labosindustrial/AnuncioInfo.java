@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 public class AnuncioInfo extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    Usuario user;
     static final String NOMBRE ="nombre",ANUNCIO="anuncio", LABO="labo", MATERIA="materia", ID="id";
     String name, body, lab, subject;
     int dni;
@@ -35,12 +36,8 @@ public class AnuncioInfo extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        name= getIntent().getStringExtra(NOMBRE);
-        body= getIntent().getStringExtra(ANUNCIO);
-        lab= getIntent().getStringExtra(LABO);
-        subject= getIntent().getStringExtra(MATERIA);
-        dni=getIntent().getIntExtra(ID,1);
-        news= new Anuncio(dni,lab,name,body,subject);
+        user= (Usuario) getIntent().getSerializableExtra("usuario");
+        news=(Anuncio) getIntent().getSerializableExtra("anuncio");
         TextView materia= (TextView) findViewById(R.id.AnMateria);
         TextView labo= (TextView) findViewById(R.id.AnLabo);
         TextView anun= (TextView) findViewById(R.id.AnAnuncio);
@@ -91,18 +88,23 @@ public class AnuncioInfo extends AppCompatActivity
 
         if (id == R.id.LabosDisp) {
             Intent intent = new Intent(this,AlumnosMain.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if (id == R.id.MisLabos) {
             Intent intent = new Intent(this, MisLabos.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if (id == R.id.Cerrar) {
             Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if (id == R.id.Personal) {
             Intent intent = new Intent(this, Informacion.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if(id== R.id.AnunciosM){
             Intent intent = new Intent(this, AnuncioMain.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         }
 

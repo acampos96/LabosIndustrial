@@ -16,15 +16,16 @@ import java.util.ArrayList;
  */
 
 public class AdapterAn extends CustomRecyclerViewAdapter {
-
+    Usuario user;
     private Activity activity;
     private ArrayList<Anuncio> anuncios;
     private int screenWidth;
     static final String NOMBRE ="nombre",ANUNCIO="anuncio", LABO="labo", MATERIA="materia", ID="id";
 
-    public AdapterAn(final Activity activity, ArrayList<Anuncio> Labos) {
+    public AdapterAn(final Activity activity, ArrayList<Anuncio> Labos, Usuario usuario) {
         this.activity = activity;
         this.anuncios = Labos;
+        this.user=usuario;
     }
 
 
@@ -47,11 +48,8 @@ public class AdapterAn extends CustomRecyclerViewAdapter {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Anuncio announcement = anuncios.get(position);
                 Intent intent = new Intent(activity,AnuncioInfo.class);
-                intent.putExtra(NOMBRE,announcement.getTitulo());
-                intent.putExtra(MATERIA, announcement.getMateria());
-                intent.putExtra(LABO, announcement.getLaboXMateria());
-                intent.putExtra(ANUNCIO,announcement.getAnuncio());
-                intent.putExtra(ID, announcement.getIdAnuncio());
+                intent.putExtra("usuario", user);
+                intent.putExtra("anuncio", announcement);
                 activity.startActivity(intent);
             }
         });

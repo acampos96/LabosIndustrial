@@ -1,12 +1,13 @@
 package com.campos0022715.labosindustrial;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Ale Campos on 25/6/2017.
  */
 
-public class Usuario {
+public class Usuario implements Serializable{
     String idUsuario, nomUsuario;
     int tipoUsuario;
     ArrayList<Laboratorio> Laboratorios;

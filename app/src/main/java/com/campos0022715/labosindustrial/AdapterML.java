@@ -16,15 +16,16 @@ import java.util.ArrayList;
  */
 
 public class AdapterML extends CustomRecyclerViewAdapter {
-
+    Usuario user;
     private Activity activity;
     private ArrayList<Laboratorio> Labos;
     private int screenWidth;
     static final String NOMBRE ="nombre", HORARIO="horario", DIA="dia", SALON="salon", INSTRUCTOR="instructor", MATERIA="materia", ID="id";
 
-    public AdapterML(final Activity activity, ArrayList<Laboratorio> Labos) {
+    public AdapterML(final Activity activity, ArrayList<Laboratorio> Labos, Usuario user) {
         this.activity = activity;
         this.Labos = Labos;
+        this.user=user;
     }
 
 
@@ -47,13 +48,8 @@ public class AdapterML extends CustomRecyclerViewAdapter {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Laboratorio labo = Labos.get(position);
                 Intent intent = new Intent(activity,DetallesMLabos.class);
-                intent.putExtra(NOMBRE,labo.getNombre());
-                intent.putExtra(HORARIO,labo.getHorario());
-                intent.putExtra(DIA, labo.getDia());
-                intent.putExtra(MATERIA,labo.getMateria());
-                intent.putExtra(ID, labo.getIdLaboXMateria());
-                intent.putExtra(SALON,labo.getSalon());
-                intent.putExtra(INSTRUCTOR,labo.getInstructor());
+                intent.putExtra("usuario", user);
+                intent.putExtra("labo",labo);
                 activity.startActivity(intent);
             }
         });

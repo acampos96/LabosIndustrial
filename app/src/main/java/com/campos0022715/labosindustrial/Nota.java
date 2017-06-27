@@ -1,10 +1,12 @@
 package com.campos0022715.labosindustrial;
 
+import java.io.Serializable;
+
 /**
  * Created by Ale Campos on 26/6/2017.
  */
 
-public class Nota {
+public class Nota implements Serializable {
     String actividad;
     Double calificacion;
 

@@ -1,10 +1,12 @@
 package com.campos0022715.labosindustrial;
 
+import java.io.Serializable;
+
 /**
  * Created by Ale Campos on 25/6/2017.
  */
 
-public class Anuncio {
+public class Anuncio implements Serializable{
     int idAnuncio;
     String LaboXMateria;
     String Titulo, Anuncio, Materia;

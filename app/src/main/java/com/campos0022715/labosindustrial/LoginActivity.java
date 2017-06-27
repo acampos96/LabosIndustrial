@@ -19,8 +19,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void entrar(View view) {
-        user = carne.getText().toString();
-        pass = contraseña.getText().toString();
+        Usuario user= new Usuario(carne.getText().toString(), "Usuario X",1);
+
         if (carne.getText().toString().trim().equals("")) {
             carne.setError("Ingrese su carnet");
         }
@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
             else {
                 //Validar con WebService
                 Intent intent = new Intent(this, AnuncioMain.class);
+                intent.putExtra("usuario", user);
                 startActivity(intent);
             }
         }

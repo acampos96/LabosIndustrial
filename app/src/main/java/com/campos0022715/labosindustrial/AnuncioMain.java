@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class AnuncioMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    Usuario user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class AnuncioMain extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        user=(Usuario) getIntent().getSerializableExtra("usuario");
         RecyclerView lista= (RecyclerView) findViewById(R.id.AnunciosLista);
         ArrayList<Anuncio> anuncios = new ArrayList<>();
 
@@ -48,7 +49,7 @@ public class AnuncioMain extends AppCompatActivity
         lista.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         lista.setLayoutManager(manager);
-        lista.setAdapter(new AdapterAn(this, anuncios));
+        lista.setAdapter(new AdapterAn(this, anuncios,user));
     }
 
     @Override
@@ -91,18 +92,23 @@ public class AnuncioMain extends AppCompatActivity
 
         if (id == R.id.LabosDisp) {
             Intent intent = new Intent(this,AlumnosMain.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if (id == R.id.MisLabos) {
             Intent intent = new Intent(this, MisLabos.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if (id == R.id.Cerrar) {
             Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if (id == R.id.Personal) {
             Intent intent = new Intent(this, Informacion.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if(id== R.id.AnunciosM){
             Intent intent = new Intent(this, AnuncioMain.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         }
 

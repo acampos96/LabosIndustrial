@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 
 public class Informacion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    Usuario user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class Informacion extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        user= (Usuario) getIntent().getSerializableExtra("usuario");
         RecyclerView inflist = (RecyclerView) findViewById(R.id.lista_contactos);
         ContactRepository listacontacto = new ContactRepository();
         inflist.setHasFixedSize(true);
@@ -85,18 +87,23 @@ public class Informacion extends AppCompatActivity
 
         if (id == R.id.LabosDisp) {
             Intent intent = new Intent(this,AlumnosMain.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if (id == R.id.MisLabos) {
             Intent intent = new Intent(this, MisLabos.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if (id == R.id.Cerrar) {
             Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if (id == R.id.Personal) {
             Intent intent = new Intent(this, Informacion.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if(id== R.id.AnunciosM){
             Intent intent = new Intent(this, AnuncioMain.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         }
 

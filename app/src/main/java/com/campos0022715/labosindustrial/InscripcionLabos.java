@@ -19,9 +19,9 @@ import android.widget.TextView;
 public class InscripcionLabos extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     static final String  NOMBRE ="nombre", HORARIO="horario", DIA="dia", SALON="salon", INSTRUCTOR="instructor", MATERIA="materia", IDL="id";
-    String materia, nombre, dia, horario, salon, instructor;
     int id;
     Laboratorio labo;
+    Usuario user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,27 +39,20 @@ public class InscripcionLabos extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        materia=getIntent().getStringExtra(MATERIA);
-        nombre=getIntent().getStringExtra(NOMBRE);
-        dia=getIntent().getStringExtra(DIA);
-        horario=getIntent().getStringExtra((HORARIO));
-        salon=getIntent().getStringExtra(SALON);
-        instructor=getIntent().getStringExtra(INSTRUCTOR);
-        id=getIntent().getIntExtra(IDL,1);
-        labo=new Laboratorio(id, materia, nombre, dia, horario, instructor, salon);
+        user=(Usuario)getIntent().getSerializableExtra("usuario");
+        labo=(Laboratorio)getIntent().getSerializableExtra("labo");
         TextView subject = (TextView) findViewById(R.id.InsMateria);
         TextView name = (TextView) findViewById(R.id.InsLabo);
         TextView day = (TextView) findViewById(R.id.InsDia);
         TextView schedule = (TextView) findViewById(R.id.InsHorario);
         TextView room = (TextView) findViewById(R.id.InsSalon);
         TextView tutor = (TextView) findViewById(R.id.InsInstructor);
-        subject.setText(materia);
-        name.setText(nombre);
-        day.setText(dia);
-        schedule.setText(horario);
-        room.setText(salon);
-        tutor.setText(instructor);
+        subject.setText(labo.getMateria());
+        name.setText(labo.getNombre());
+        day.setText(labo.getDia());
+        schedule.setText(labo.getHorario());
+        room.setText(labo.getSalon());
+        tutor.setText(labo.getInstructor());
 
     }
 
@@ -103,18 +96,23 @@ public class InscripcionLabos extends AppCompatActivity
 
         if (id == R.id.LabosDisp) {
             Intent intent = new Intent(this,AlumnosMain.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if (id == R.id.MisLabos) {
             Intent intent = new Intent(this, MisLabos.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if (id == R.id.Cerrar) {
             Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if (id == R.id.Personal) {
             Intent intent = new Intent(this, Informacion.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         } else if(id== R.id.AnunciosM){
             Intent intent = new Intent(this, AnuncioMain.class);
+            intent.putExtra("usuario", user);
             startActivity(intent);
         }
 
