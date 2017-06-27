@@ -16,5 +16,10 @@
     <string name="title_activity_anuncio_main">Anuncios</string>
     <string name="title_activity_anuncio_info">Detalles de Anuncio</string>
     <string name="title_activity_informacion">Personal del Departamento</string>
+    <string name="department_introduction">"La  meta del Ingeniero Industrial es la de encontrar esa  manera de hacer las cosas en todas las áreas en que se  desempeña"</string>
+    <string name="area_laboral1">Puestos gerenciales o intermedios en las áreas de: recursos humanos, mercadeo, operaciones, finanzas, contabilidad, administrativa y/o estratégica</string>
+    <string name="area_laboral2">Podrá desarrollar labores de docencia, capacitación e investigación en todas las áreas del quehacer administrativo en general</string>
+    <string name="area_laboral3">Podrá desempeñarse como asesor o consultor de empresas, tanto públicas como privadas y/o en el desarrollo de estudios de factibilidad y gerencia de proyectos</string>
+    <string name="area_laboral4">Podrá desempeñarse como empresario al frente de sus propios negocios</string>
     <string name="title_activity_ver_notas">Mis Notas</string>
 </resources>
