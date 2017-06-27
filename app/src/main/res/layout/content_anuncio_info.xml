@@ -48,6 +48,7 @@
             android:id="@+id/AnAnuncio"
             tools:text="Cuerpo del anuncio, este mensaje no debe de superar los 300 caracteres"
             android:textSize="25sp"
-            android:padding="20dp"/>
+            android:padding="20dp"
+            android:scrollbars="vertical"/>
 
 </LinearLayout>

@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 public class InscripcionLabos extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    static final String NOMBRE ="nombre", HORARIO="horario", DIA="dia", SALON="salon", INSTRUCTOR="instructor", MATERIA="materia", IDL="id";
+    static final String  NOMBRE ="nombre", HORARIO="horario", DIA="dia", SALON="salon", INSTRUCTOR="instructor", MATERIA="materia", IDL="id";
     String materia, nombre, dia, horario, salon, instructor;
     int id;
     Laboratorio labo;
@@ -110,9 +110,10 @@ public class InscripcionLabos extends AppCompatActivity
         } else if (id == R.id.Cerrar) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-        } else if (id == R.id.Informacion) {
-        }
-        else if(id== R.id.AnunciosM){
+        } else if (id == R.id.Personal) {
+            Intent intent = new Intent(this, Informacion.class);
+            startActivity(intent);
+        } else if(id== R.id.AnunciosM){
             Intent intent = new Intent(this, AnuncioMain.class);
             startActivity(intent);
         }
@@ -123,5 +124,6 @@ public class InscripcionLabos extends AppCompatActivity
     }
     public void clic(View view){
         Snackbar.make(view, "Inscripcion exitosa", Snackbar.LENGTH_SHORT).show();
+
     }
 }

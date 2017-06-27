@@ -92,9 +92,10 @@ public class Informacion extends AppCompatActivity
         } else if (id == R.id.Cerrar) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-        } else if (id == R.id.Informacion) {
-        }
-        else if(id== R.id.AnunciosM){
+        } else if (id == R.id.Personal) {
+            Intent intent = new Intent(this, Informacion.class);
+            startActivity(intent);
+        } else if(id== R.id.AnunciosM){
             Intent intent = new Intent(this, AnuncioMain.class);
             startActivity(intent);
         }

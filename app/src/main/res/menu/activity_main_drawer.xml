@@ -20,9 +20,13 @@
     <item android:title="Contáctanos">
         <menu>
             <item
-                android:id="@+id/Informacion"
+                android:id="@+id/Personal"
                 android:icon="@drawable/emptyicon"
-                android:title="Información" />
+                android:title="Personal" />
+            <item
+                android:id="@+id/Information"
+                android:icon="@drawable/emptyicon"
+                android:title="Información"/>
         </menu>
     </item>
     <item android:title="Ajustes">

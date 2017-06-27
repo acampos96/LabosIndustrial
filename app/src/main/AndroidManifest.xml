@@ -49,10 +49,15 @@
         <activity
             android:name=".AnuncioInfo"
             android:label="@string/title_activity_anuncio_info"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Informacion"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Informacion"
             android:label="@string/title_activity_informacion"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VerNotas"
+            android:label="@string/title_activity_ver_notas"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -2,8 +2,11 @@ package com.campos0022715.labosindustrial;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,17 +15,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class AlumnosMain extends AppCompatActivity
+public class VerNotas extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    String subject, lab;
+    static final String LABO="laboratorio", MATERIA="materia";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alumnos_main);
+        setContentView(R.layout.activity_ver_notas);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -34,22 +38,23 @@ public class AlumnosMain extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        RecyclerView lista= (RecyclerView) findViewById(R.id.LabosAlumnos);
-        ArrayList<Laboratorio> labos = new ArrayList<>();
-
-        //POB
-        labos.add(new Laboratorio(1, "Ciencia de los Materiales","Laboratorio 01", "Lunes","13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
-        labos.add(new Laboratorio(2, "Mecánica de los Materiales","Laboratorio 02", "Martes", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
-        labos.add(new Laboratorio(3, "Materia X","Laboratorio 03", "Miercoles", " 13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
-        labos.add(new Laboratorio(4, "Ciencia de los Materiales","Laboratorio 01", "Lunes", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
-        labos.add(new Laboratorio(5, "Mecánica de los Materiales","Laboratorio 02", "Martes", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-1"));
-        labos.add(new Laboratorio(6, "Materia X","Laboratorio 03", "Miercoles", "13:30-15:10", "Nestor Santiago Aldana Rodriguez","L-2"));
-
-
+        TextView laboratorio = (TextView) findViewById(R.id.NotaLabo);
+        TextView materia = (TextView) findViewById(R.id.NotaMateria);
+        lab=getIntent().getStringExtra(LABO);
+        subject=getIntent().getStringExtra(MATERIA);
+        laboratorio.setText(lab);
+        materia.setText(subject);
+        RecyclerView lista = (RecyclerView) findViewById(R.id.NotasLista);
+        ArrayList<Nota> arreglo= new ArrayList<>();
+        arreglo.add(new Nota("Nota 1", 9.56));
+        arreglo.add(new Nota("Nota 2", 6.25));
+        arreglo.add(new Nota("Nota 3", 4.7));
+        arreglo.add(new Nota("Nota 4", 7.5));
+        arreglo.add(new Nota("Nota Final", (9.56+6.25+4.7+7.5)/4));
         lista.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         lista.setLayoutManager(manager);
-        lista.setAdapter(new Adapter(this, labos));
+        lista.setAdapter(new AdapterNts(this, arreglo));
     }
 
     @Override
@@ -65,7 +70,7 @@ public class AlumnosMain extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.alumnos_main, menu);
+        getMenuInflater().inflate(R.menu.ver_notas, menu);
         return true;
     }
 
@@ -106,7 +111,6 @@ public class AlumnosMain extends AppCompatActivity
             Intent intent = new Intent(this, AnuncioMain.class);
             startActivity(intent);
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

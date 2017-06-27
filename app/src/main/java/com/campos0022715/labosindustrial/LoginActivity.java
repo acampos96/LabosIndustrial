@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
             }
             else {
                 //Validar con WebService
-                Intent intent = new Intent(this, AlumnosMain.class);
+                Intent intent = new Intent(this, AnuncioMain.class);
                 startActivity(intent);
             }
         }
