@@ -17,9 +17,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
+import java.util.concurrent.ExecutionException;
+
 public class Informacion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Usuario user;
+    ContactAdapter adapter;
+    RecyclerView reciclador;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +43,26 @@ public class Informacion extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        String parametro = "contactos";
         user= (Usuario) getIntent().getSerializableExtra("usuario");
-        RecyclerView inflist = (RecyclerView) findViewById(R.id.lista_contactos);
-        ContactRepository listacontacto = new ContactRepository();
+        reciclador = (RecyclerView) findViewById(R.id.lista_contactos);
+        // ContactRepository listacontacto = new ContactRepository();
+
+
+        try {
+            new OpenData(this,adapter,reciclador, parametro).execute().get();
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException f) {
+            f.printStackTrace();
+        }
+
+        /*
         inflist.setHasFixedSize(true);
         LinearLayoutManager lista = new LinearLayoutManager(this);
         inflist.setLayoutManager(lista);
-        inflist.setAdapter(new ContactAdapter(this, listacontacto.getList()));
+        inflist.setAdapter(new ContactAdapter(this, listacontacto.getList()));*/
     }
 
     @Override

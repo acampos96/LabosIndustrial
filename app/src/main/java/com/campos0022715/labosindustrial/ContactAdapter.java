@@ -1,6 +1,7 @@
 package com.campos0022715.labosindustrial;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -18,19 +19,26 @@ import java.util.ArrayList;
 public class ContactAdapter extends CustomRecyclerViewAdapter {
 
     private Activity activity;
-    private ArrayList<ContactRepository.Contact> Contactos;
+    //private ArrayList<ContactRepository.Contact> Contactos;
+    private ArrayList<Contact> Contactos;
     private int screenWidth;
+    Context context;
     static final String NOMBRE ="nombre", CORREO ="correo", PUESTO ="rol", ID="id";
-
-    public ContactAdapter(final Activity activity, ArrayList<ContactRepository.Contact> Contactos) {
+    /*
+    public ContactAdapter(final Activity activity, ArrayList<ContactRepository.Contact> contactos) {
         this.activity = activity;
-        this.Contactos = Contactos;
+        this.contactos = contactos;
+    }*/
+
+    public ContactAdapter(Context context, ArrayList<Contact> contactos) {
+        this.context = context;
+        this.Contactos = contactos;
     }
 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity)
+        View view = LayoutInflater.from(context)
                 .inflate(R.layout.contact_list, parent, false);
         return new ViewHolder(view);
     }

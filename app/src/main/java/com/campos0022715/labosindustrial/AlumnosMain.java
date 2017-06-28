@@ -15,10 +15,13 @@ import android.view.MenuItem;
 
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class AlumnosMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Usuario user;
+    Adapter adapter;
+    RecyclerView reciclador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +38,20 @@ public class AlumnosMain extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        String parametro = "labos";
         user= (Usuario) getIntent().getSerializableExtra("usuario");
-        RecyclerView lista= (RecyclerView) findViewById(R.id.LabosAlumnos);
+        reciclador= (RecyclerView) findViewById(R.id.LabosAlumnos);
+
+        try {
+            new OpenData(this,adapter,reciclador, parametro, user).execute().get();
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException f) {
+            f.printStackTrace();
+        }/*
+
+
         ArrayList<Laboratorio> labos = new ArrayList<>();
 
         //POB
@@ -50,7 +65,7 @@ public class AlumnosMain extends AppCompatActivity
         lista.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         lista.setLayoutManager(manager);
-        lista.setAdapter(new Adapter(this, labos, user));
+        lista.setAdapter(new Adapter(this, labos, user));*/
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.campos0022715.labosindustrial;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 
 public class Adapter extends CustomRecyclerViewAdapter {
     Usuario user;
+    Context context;
     private Activity activity;
     private ArrayList<Laboratorio> Labos;
     private int screenWidth;
@@ -28,10 +30,16 @@ public class Adapter extends CustomRecyclerViewAdapter {
         this.user=usuario;
     }
 
+    public Adapter(Context context, ArrayList<Laboratorio> Labos, Usuario usuario) {
+        this.context=context;
+        this.Labos = Labos;
+        this.user=usuario;
+    }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity)
+        View view = LayoutInflater.from(context)
                 .inflate(R.layout.labo_list_element, parent, false);
         return new ViewHolder(view);
     }
@@ -47,10 +55,10 @@ public class Adapter extends CustomRecyclerViewAdapter {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Laboratorio labo = Labos.get(position);
-                Intent intent = new Intent(activity,InscripcionLabos.class);
+                Intent intent = new Intent(context,InscripcionLabos.class);
                 intent.putExtra("usuario", user);
                 intent.putExtra("labo",labo);
-                activity.startActivity(intent);
+                context.startActivity(intent);
             }
         });
     }

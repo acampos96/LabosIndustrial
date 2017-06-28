@@ -17,10 +17,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class AnuncioMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Usuario user;
+    AdapterAn adapter;
+    RecyclerView reciclador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +37,28 @@ public class AnuncioMain extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
-
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
+
+
+        String parametro = "anuncios";
         user=(Usuario) getIntent().getSerializableExtra("usuario");
+        reciclador= (RecyclerView) findViewById(R.id.AnunciosLista);
 
 
-        RecyclerView lista= (RecyclerView) findViewById(R.id.AnunciosLista);
+        try {
+            new OpenData(this,adapter,reciclador, parametro, user).execute().get();
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException f) {
+            f.printStackTrace();
+        }
+
+        /*
+
+
         ArrayList<Anuncio> anuncios = new ArrayList<>();
 
         //POB
@@ -55,6 +70,7 @@ public class AnuncioMain extends AppCompatActivity
         LinearLayoutManager manager = new LinearLayoutManager(this);
         lista.setLayoutManager(manager);
         lista.setAdapter(new AdapterAn(this, anuncios,user));
+        */
     }
 
     @Override
