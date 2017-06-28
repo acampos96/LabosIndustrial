@@ -9,7 +9,8 @@
     tools:showIn="@layout/app_bar_intro_carrera">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
 
         <TextView
             android:layout_width="match_parent"
@@ -45,6 +46,14 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:textColor="@color/colorAccent"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,7 +90,8 @@
             android:text="@string/area_laboral4"
             android:textSize="17sp"
             android:textColor="@color/cardview_dark_background"/>
-
+        </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
 </LinearLayout>

@@ -36,7 +36,7 @@
             android:id="@+id/carne"
             android:singleLine="true"
             android:layout_gravity="center"
-            android:hint="Carné"/>
+            android:hint="Usuario"/>
 
     </android.support.design.widget.TextInputLayout>
 

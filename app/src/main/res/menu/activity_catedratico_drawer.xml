@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="General">
+        <menu android:checkableBehavior="single">
+            <item
+                android:id="@+id/AnunciosM"
+                android:icon="@drawable/emptyicon"
+                android:title="Anuncios"/>
+            <item
+                android:id="@+id/MisLabos"
+                android:icon="@drawable/emptyicon"
+                android:title="Mis Laboratorios" />
+
+        </menu>
+    </item>
+    <item android:title="Contáctanos">
+        <menu>
+            <item
+                android:id="@+id/Personal"
+                android:icon="@drawable/emptyicon"
+                android:title="Personal" />
+            <item
+                android:id="@+id/Informacion"
+                android:icon="@drawable/emptyicon"
+                android:title="Información"/>
+        </menu>
+    </item>
+    <item android:title="Ajustes">
+        <menu>
+            <item
+                android:id="@+id/Cerrar"
+                android:icon="@drawable/emptyicon"
+                android:title="Cerrar Sesión" />
+        </menu>
+    </item>
+</menu>
+

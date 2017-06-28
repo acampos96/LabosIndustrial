@@ -19,7 +19,60 @@
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/NewAnMateria"
+            android:singleLine="true"
+            android:layout_gravity="start"
+            android:hint="Nombre de la Materia"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/NewAnLaboratorio"
+            android:singleLine="true"
+            android:layout_gravity="start"
+            android:hint="Nombre del Laboratorio"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:counterEnabled="true"
+        app:counterMaxLength="150"
+        android:padding="10dp"
+        android:layout_gravity="start">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/NewAnTitulo"
+            android:layout_gravity="center"
+            android:singleLine="true"
+            android:hint="Titulo del Anuncio"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:counterEnabled="true"
+        app:counterMaxLength="300"
+        android:padding="10dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/NewAnAnuncio"
+            android:layout_gravity="center"
+            android:hint="Cuerpo del Anuncio"/>
     </android.support.design.widget.TextInputLayout>
 </LinearLayout>
