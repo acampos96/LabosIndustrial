@@ -63,6 +63,10 @@
         <activity
             android:name=".IntroCarrera"
             android:label="@string/title_activity_intro_carrera"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CrearAnuncio"
+            android:label="@string/title_activity_crear_anuncio"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

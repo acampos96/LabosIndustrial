@@ -23,4 +23,5 @@
     <string name="area_laboral4">Podrá desempeñarse como empresario al frente de sus propios negocios</string>
     <string name="title_activity_ver_notas">Mis Notas</string>
     <string name="title_activity_intro_carrera">Informacion de la Carrera</string>
+    <string name="title_activity_crear_anuncio">Publicar un Anuncio</string>
 </resources>
