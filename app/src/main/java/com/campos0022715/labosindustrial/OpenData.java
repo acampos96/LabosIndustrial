@@ -36,6 +36,8 @@ public class OpenData extends AsyncTask<Void, Void, String> {
     Usuario user;
     Adapter adapterL;
     ContactAdapter adapterC;
+    String iduser;
+    AdapterML adapterML;
 
     static final String TAG = "LoadData";
     private Context context;
@@ -55,13 +57,19 @@ public class OpenData extends AsyncTask<Void, Void, String> {
 
     ArrayList<Contact> contactos = new ArrayList<>();
 
+    //Arreglo de contactos
+
+    ArrayList<Laboratorio> mislabos = new ArrayList<>();
+
 
 
     //URLS para acceder a Webserver
-    String ip = "192.168.100.6";
+    //String ip = "192.168.100.6";
+    String ip = "192.168.1.4";
     String url_anuncios="http://"+ip+"/WebServiceProyecto/obtener_anuncios.php";
     String url_laboratorios="http://"+ip+"/WebServiceProyecto/obtener_laboratorioxmateria.php";
     String url_contactos="http://"+ip+"/WebServiceProyecto/obtener_contactos.php";
+    String url_mislabos="http://"+ip+"/WebServiceProyecto/obtener_alumnosxlaboratorio_por_id.php?idAlumno=";
 
     public OpenData(){}
     //Constructor para anuncios
@@ -73,6 +81,17 @@ public class OpenData extends AsyncTask<Void, Void, String> {
         parameter=condition;
         this.user=user;
     }
+    //Constructor para mis labos
+
+    public OpenData(Context c, AdapterML adaptador,RecyclerView recycler, String condition, Usuario  user, String iduser){
+        context = c;
+        adapterML=adaptador;
+        rv=recycler;
+        parameter=condition;
+        this.user=user;
+        this.iduser=iduser;
+    }
+
     //Constructor para laboratorios
     public OpenData(Context c, Adapter adaptador,RecyclerView recycler, String condition, Usuario  user){
         context = c;
@@ -112,8 +131,11 @@ public class OpenData extends AsyncTask<Void, Void, String> {
             case "contactos":
                 response =readURL(url_contactos);
                 break;
-            case "news":
-                //response = enviarjuegosGET(gameName,url_news,parameter);
+            case "mislabos":
+                Log.d(TAG, iduser);
+                Log.d(TAG, url_mislabos+iduser);
+                response = readURL(url_mislabos+iduser);
+
         }
        // pDialog.dismiss();
         return null;
@@ -133,7 +155,9 @@ public class OpenData extends AsyncTask<Void, Void, String> {
             case "contactos":
                 getContacts(response);
                 break;
-            case "algo":
+            case "mislabos":
+                getMislabos(response);
+                break;
         }
 
     }
@@ -235,6 +259,38 @@ public class OpenData extends AsyncTask<Void, Void, String> {
         LinearLayoutManager manager = new LinearLayoutManager(context);
         rv.setLayoutManager(manager);
         rv.setAdapter(adapter);
+    }
+
+
+    public void  getMislabos(String jsoncad){
+
+        try {
+            JSONObject jsonObject = new JSONObject(jsoncad);
+            // JSONArray jsonArray =  jsonObject.getJSONArray("products");
+            JSONArray jsonArray =  jsonObject.getJSONArray("labos");
+
+            for(int i =0;i<jsonArray.length(); i++){
+                JSONObject productObject = jsonArray.getJSONObject(i);
+                mislabos.add(new Laboratorio(
+                        Integer.parseInt(productObject.getString("idLaboXMateria")),
+                        productObject.getString("NomMateria"),
+                        productObject.getString("Nombre"),
+                        productObject.getString("Dia"),
+                        productObject.getString("Horario"),
+                        productObject.getString("NomUsuario"),
+                        productObject.getString("NomLabo")
+                ));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        adapterML = new AdapterML(context, mislabos,user);
+        rv.setHasFixedSize(true);
+        LinearLayoutManager manager = new LinearLayoutManager(context);
+        rv.setLayoutManager(manager);
+        rv.setAdapter(adapterML);
+
+
     }
 
     public void  getLaboratorios(String jsoncad){

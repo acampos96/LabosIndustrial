@@ -17,10 +17,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class MisLabos extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Usuario user;
+
+    AdapterML adapter;
+    RecyclerView reciclador;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +41,23 @@ public class MisLabos extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        String parametro = "mislabos";
         user= (Usuario) getIntent().getSerializableExtra("usuario");
-        RecyclerView lista= (RecyclerView) findViewById(R.id.MisLabosAlumnos);
+        reciclador= (RecyclerView) findViewById(R.id.MisLabosAlumnos);
+
+        try {
+            new OpenData(this,adapter,reciclador, parametro, user, user.getIdUsuario().toString()).execute().get();
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException f) {
+            f.printStackTrace();
+        }
+        /*
+
+
+
         ArrayList<Laboratorio> labos = new ArrayList<>();
 
         //POB
@@ -49,7 +68,7 @@ public class MisLabos extends AppCompatActivity
         lista.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         lista.setLayoutManager(manager);
-        lista.setAdapter(new AdapterML(this, labos, user));
+        lista.setAdapter(new AdapterML(this, labos, user));*/
     }
 
     @Override

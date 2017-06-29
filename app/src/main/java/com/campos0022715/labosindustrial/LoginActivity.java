@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
         StringBuilder resul= null;
 
         try {
-            url = new URL("http://192.168.100.6/WebServiceProyecto/validar.php?usu="+user+"&pas="+pass);
+            url = new URL("http://192.168.1.4/WebServiceProyecto/validar.php?usu="+user+"&pas="+pass);
             HttpURLConnection conection=(HttpURLConnection)url.openConnection();
             respuesta=conection.getResponseCode();
 
