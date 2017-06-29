@@ -46,8 +46,8 @@ public class InscripcionLabos extends AppCompatActivity
     Usuario user;
 
 
-    // IP de mi Url
-    String IP = "http://192.168.1.4/WebServiceProyecto/insertar_alumnosxlaboratorio.php";
+    // IP de mi Url http://ilabo-com.stackstaging.com/WebServiceProyecto/
+    String IP = "http://ilabo-com.stackstaging.com/WebServiceProyecto/insertar_alumnosxlaboratorio.php";
 
     ObtenerWebService hiloconexion;
 

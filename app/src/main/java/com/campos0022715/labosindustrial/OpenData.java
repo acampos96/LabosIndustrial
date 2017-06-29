@@ -64,8 +64,8 @@ public class OpenData extends AsyncTask<Void, Void, String> {
 
 
     //URLS para acceder a Webserver
-    //String ip = "192.168.100.6";
-    String ip = "192.168.1.4";
+    //String ip = "192.168.100.6"; ilabo-com.stackstaging.com/WebServiceProyecto/
+    String ip = "ilabo-com.stackstaging.com";
     String url_anuncios="http://"+ip+"/WebServiceProyecto/obtener_anuncios.php";
     String url_laboratorios="http://"+ip+"/WebServiceProyecto/obtener_laboratorioxmateria.php";
     String url_contactos="http://"+ip+"/WebServiceProyecto/obtener_contactos.php";
