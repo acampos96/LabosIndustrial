@@ -45,24 +45,18 @@ public class Informacion extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         String parametro = "contactos";
-        user= (Usuario) getIntent().getSerializableExtra("usuario");
-        reciclador = (RecyclerView) findViewById(R.id.lista_contactos);
-        // ContactRepository listacontacto = new ContactRepository();
+
+            user= (Usuario) getIntent().getSerializableExtra("usuario");
+
+            reciclador = (RecyclerView) findViewById(R.id.lista_contactos);
+            ContactRepository listacontacto = new ContactRepository();
 
 
-        try {
-            new OpenData(this,adapter,reciclador, parametro).execute().get();
-        }catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException f) {
-            f.printStackTrace();
-        }
+            reciclador.setHasFixedSize(true);
+            LinearLayoutManager lista = new LinearLayoutManager(this);
+            reciclador.setLayoutManager(lista);
+            reciclador.setAdapter(new ContactAdapter(this, listacontacto.getList()));
 
-        /*
-        inflist.setHasFixedSize(true);
-        LinearLayoutManager lista = new LinearLayoutManager(this);
-        inflist.setLayoutManager(lista);
-        inflist.setAdapter(new ContactAdapter(this, listacontacto.getList()));*/
     }
 
     @Override

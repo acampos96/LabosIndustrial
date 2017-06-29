@@ -20,25 +20,25 @@ public class ContactAdapter extends CustomRecyclerViewAdapter {
 
     private Activity activity;
     //private ArrayList<ContactRepository.Contact> Contactos;
-    private ArrayList<Contact> Contactos;
+    private ArrayList<ContactRepository.Contact> Contactos;
     private int screenWidth;
     Context context;
     static final String NOMBRE ="nombre", CORREO ="correo", PUESTO ="rol", ID="id";
-    /*
+
     public ContactAdapter(final Activity activity, ArrayList<ContactRepository.Contact> contactos) {
         this.activity = activity;
-        this.contactos = contactos;
-    }*/
+        this.Contactos = contactos;
+    }
 
     public ContactAdapter(Context context, ArrayList<Contact> contactos) {
         this.context = context;
-        this.Contactos = contactos;
+        //this.Contactos = contactos;
     }
 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context)
+        View view = LayoutInflater.from(activity)
                 .inflate(R.layout.contact_list, parent, false);
         return new ViewHolder(view);
     }

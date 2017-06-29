@@ -39,30 +39,37 @@
         <activity
             android:name=".MisLabos"
             android:label="@string/title_activity_mis_labos"
+            android:screenOrientation="userPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DetallesMLabos"
             android:label="@string/title_activity_detalles_mlabos"
+            android:screenOrientation="userPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AnuncioMain"
             android:label="@string/title_activity_anuncio_main"
+            android:screenOrientation="userPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AnuncioInfo"
             android:label="@string/title_activity_anuncio_info"
+            android:screenOrientation="userPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Informacion"
             android:label="@string/title_activity_informacion"
+            android:screenOrientation="userPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VerNotas"
             android:label="@string/title_activity_ver_notas"
+            android:screenOrientation="userPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".IntroCarrera"
             android:label="@string/title_activity_intro_carrera"
+            android:screenOrientation="userPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
